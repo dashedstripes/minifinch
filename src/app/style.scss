@@ -1,0 +1,30 @@
+@import "./sass/variables.scss";
+
+// Global
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: $lightgrey;
+}
+
+.btn {
+  border: 0px;
+}
+
+.btn-primary {
+  color: $white;
+  background: $compliment;
+  border: 0px;
+
+  &:hover {
+    background: lighten($compliment, 5%);
+  }
+
+  &:active {
+    background: darken($compliment, 5%)!important;
+  }
+
+  &:focus {
+    background: darken($compliment, 5%);
+  }
+}

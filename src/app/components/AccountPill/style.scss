@@ -1,0 +1,12 @@
+@import '../../sass/variables.scss';
+
+.account-pill {
+  width: 100%;
+  white-space: normal;
+  border: 1px dotted $darkgrey;
+  color: $darkgrey;
+}
+
+.account-pill-item {
+  margin-bottom: 10px;
+}

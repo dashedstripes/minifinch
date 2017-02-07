@@ -1,0 +1,21 @@
+@import '../../sass/variables.scss';
+
+.navbar-minifinch {
+  background: $darkgrey;
+}
+
+.navbar-brand {
+  color: $lightgrey;
+}
+
+.nav {
+  li {
+    a {
+      color: $lightgrey;
+    }
+  }
+}
+
+.navbar-toggle .icon-bar {
+  color: $lightgrey;
+}
