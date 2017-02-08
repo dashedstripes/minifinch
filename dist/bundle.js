@@ -62,23 +62,23 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _style = __webpack_require__(275);
+	var _style = __webpack_require__(276);
 
 	var _style2 = _interopRequireDefault(_style);
 
-	var _Layout = __webpack_require__(278);
+	var _Layout = __webpack_require__(280);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _NoMatch = __webpack_require__(288);
+	var _NoMatch = __webpack_require__(291);
 
 	var _NoMatch2 = _interopRequireDefault(_NoMatch);
 
-	var _Header = __webpack_require__(279);
+	var _Header = __webpack_require__(281);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Main = __webpack_require__(289);
+	var _Main = __webpack_require__(292);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
@@ -28725,7 +28725,7 @@
 
 	var _accounts2 = _interopRequireDefault(_accounts);
 
-	var _currentAccount = __webpack_require__(313);
+	var _currentAccount = __webpack_require__(275);
 
 	var _currentAccount2 = _interopRequireDefault(_currentAccount);
 
@@ -30366,6 +30366,10 @@
 	      var setEditModal = Object.assign({}, state);
 	      setEditModal.type = 'edit';
 	      return setEditModal;
+	    case 'SET_NEW_MODAL':
+	      var setNewModal = Object.assign({}, state);
+	      setNewModal.type = 'new';
+	      return setNewModal;
 	  }
 	  return state;
 	};
@@ -30405,13 +30409,49 @@
 /* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _underscore = __webpack_require__(272);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var accounts = function accounts() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'SET_CURRENT_ACCOUNT':
+	      return Object.assign({}, state, action.payload);
+	    case 'EMPTY_CURRENT_ACCCOUNT':
+	      return {
+	        name: '',
+	        subdomain: '',
+	        email: '',
+	        token: ''
+	      };
+	  }
+	  return state;
+	};
+
+	exports.default = accounts;
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(276);
+	var content = __webpack_require__(277);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30428,10 +30468,10 @@
 	}
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -30442,7 +30482,63 @@
 
 
 /***/ },
-/* 277 */
+/* 278 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30694,7 +30790,7 @@
 
 
 /***/ },
-/* 278 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30705,15 +30801,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Header = __webpack_require__(279);
+	var _Header = __webpack_require__(281);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _ModalContainer = __webpack_require__(283);
+	var _ModalContainer = __webpack_require__(284);
 
 	var _ModalContainer2 = _interopRequireDefault(_ModalContainer);
 
-	var _style = __webpack_require__(286);
+	var _style = __webpack_require__(289);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -30753,7 +30849,7 @@
 	module.exports = Layout;
 
 /***/ },
-/* 279 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30766,7 +30862,7 @@
 
 	var _reactRouter = __webpack_require__(178);
 
-	__webpack_require__(280);
+	__webpack_require__(282);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30843,16 +30939,16 @@
 	module.exports = Header;
 
 /***/ },
-/* 280 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(281);
+	var content = __webpack_require__(283);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30869,10 +30965,10 @@
 	}
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -30883,63 +30979,7 @@
 
 
 /***/ },
-/* 282 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30952,11 +30992,11 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _Modal = __webpack_require__(284);
+	var _Modal = __webpack_require__(285);
 
 	var _Modal2 = _interopRequireDefault(_Modal);
 
-	var _modal = __webpack_require__(285);
+	var _modal = __webpack_require__(286);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30995,7 +31035,7 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(ModalContainer);
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31008,9 +31048,9 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _modal = __webpack_require__(285);
+	var _modal = __webpack_require__(286);
 
-	__webpack_require__(314);
+	__webpack_require__(287);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31030,6 +31070,11 @@
 	  }
 
 	  _createClass(Modal, [{
+	    key: 'textChange',
+	    value: function textChange(e) {
+	      console.log(e.target.value);
+	    }
+	  }, {
 	    key: 'handleClose',
 	    value: function handleClose(e) {
 	      this.props.dispatch((0, _modal.setModalVisible)(false));
@@ -31059,12 +31104,15 @@
 	                    '\xD7'
 	                  )
 	                ),
-	                _react2.default.createElement(
+	                this.props.type == 'edit' && _react2.default.createElement(
 	                  'h4',
 	                  { className: 'modal-title' },
-	                  this.props.account.name,
-	                  ' - ',
-	                  this.props.type
+	                  this.props.account.name
+	                ),
+	                this.props.type == 'new' && _react2.default.createElement(
+	                  'h4',
+	                  { className: 'modal-title' },
+	                  'New Account'
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -31085,7 +31133,7 @@
 	                        'Name'
 	                      ),
 	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.name, className: 'form-control' })
+	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.name, className: 'form-control', onChange: this.textChange.bind(this) })
 	                    ),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
@@ -31097,7 +31145,7 @@
 	                        'Subdomain'
 	                      ),
 	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.subdomain, className: 'form-control' })
+	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.subdomain, className: 'form-control', onChange: this.textChange.bind(this) })
 	                    )
 	                  ),
 	                  _react2.default.createElement(
@@ -31112,7 +31160,7 @@
 	                        'Email'
 	                      ),
 	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.email, className: 'form-control' })
+	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.email, className: 'form-control', onChange: this.textChange.bind(this) })
 	                    ),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
@@ -31124,7 +31172,7 @@
 	                        'Token'
 	                      ),
 	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.token, className: 'form-control' })
+	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.token, className: 'form-control', onChange: this.textChange.bind(this) })
 	                    )
 	                  )
 	                )
@@ -31141,6 +31189,11 @@
 	                  'button',
 	                  { type: 'button', className: 'btn btn-primary' },
 	                  'Save changes'
+	                ),
+	                this.props.type == 'new' && _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-primary' },
+	                  'Create account'
 	                )
 	              )
 	            )
@@ -31158,7 +31211,7 @@
 	module.exports = (0, _reactRedux.connect)()(Modal);
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31179,17 +31232,23 @@
 	  };
 	};
 
+	var setNewModal = exports.setNewModal = function setNewModal() {
+	  return {
+	    type: 'SET_NEW_MODAL'
+	  };
+	};
+
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(287);
+	var content = __webpack_require__(288);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31206,10 +31265,50 @@
 	}
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".modal-body .input-group {\n  width: 100%; }\n\n.modal-body .form-control {\n  width: 100%; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(290);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(279)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -31220,7 +31319,7 @@
 
 
 /***/ },
-/* 288 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31265,7 +31364,7 @@
 	module.exports = NoMatch;
 
 /***/ },
-/* 289 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31276,15 +31375,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AccountsContainer = __webpack_require__(290);
+	var _AccountsContainer = __webpack_require__(293);
 
 	var _AccountsContainer2 = _interopRequireDefault(_AccountsContainer);
 
-	var _ProcessArea = __webpack_require__(300);
+	var _ProcessArea = __webpack_require__(304);
 
 	var _ProcessArea2 = _interopRequireDefault(_ProcessArea);
 
-	__webpack_require__(310);
+	__webpack_require__(314);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31343,7 +31442,7 @@
 	module.exports = Home;
 
 /***/ },
-/* 290 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31356,17 +31455,17 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _accounts = __webpack_require__(291);
+	var _accounts = __webpack_require__(294);
 
-	var _AccountPill = __webpack_require__(292);
+	var _AccountPill = __webpack_require__(295);
 
 	var _AccountPill2 = _interopRequireDefault(_AccountPill);
 
-	var _NewAccountButton = __webpack_require__(295);
+	var _NewAccountButton = __webpack_require__(299);
 
 	var _NewAccountButton2 = _interopRequireDefault(_NewAccountButton);
 
-	__webpack_require__(298);
+	__webpack_require__(302);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31430,7 +31529,7 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(AccountsContainer);
 
 /***/ },
-/* 291 */
+/* 294 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31446,7 +31545,7 @@
 	};
 
 /***/ },
-/* 292 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31459,11 +31558,11 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _modal = __webpack_require__(285);
+	var _modal = __webpack_require__(286);
 
-	var _currentAccount = __webpack_require__(312);
+	var _currentAccount = __webpack_require__(296);
 
-	__webpack_require__(293);
+	__webpack_require__(297);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31511,16 +31610,38 @@
 	module.exports = (0, _reactRedux.connect)()(AccountPill);
 
 /***/ },
-/* 293 */
+/* 296 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var setCurrentAccount = exports.setCurrentAccount = function setCurrentAccount(payload) {
+	  return {
+	    type: 'SET_CURRENT_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+	var emptyCurrentAccount = exports.emptyCurrentAccount = function emptyCurrentAccount() {
+	  return {
+	    type: 'EMPTY_CURRENT_ACCOUNT'
+	  };
+	};
+
+/***/ },
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(294);
+	var content = __webpack_require__(298);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31537,10 +31658,10 @@
 	}
 
 /***/ },
-/* 294 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -31551,7 +31672,7 @@
 
 
 /***/ },
-/* 295 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31562,7 +31683,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(296);
+	var _reactRedux = __webpack_require__(233);
+
+	var _currentAccount = __webpack_require__(296);
+
+	var _modal = __webpack_require__(286);
+
+	__webpack_require__(300);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31582,11 +31709,19 @@
 	  }
 
 	  _createClass(NewAccountButton, [{
+	    key: 'handleClick',
+	    value: function handleClick(e) {
+	      e.preventDefault();
+	      this.props.dispatch((0, _currentAccount.emptyCurrentAccount)());
+	      this.props.dispatch((0, _modal.setModalVisible)(true));
+	      this.props.dispatch((0, _modal.setNewModal)());
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'button',
-	        { className: 'btn btn-primary new-account-button' },
+	        { className: 'btn btn-primary new-account-button', onClick: this.handleClick.bind(this) },
 	        'New Account'
 	      );
 	    }
@@ -31595,19 +31730,19 @@
 	  return NewAccountButton;
 	}(_react2.default.Component);
 
-	module.exports = NewAccountButton;
+	module.exports = (0, _reactRedux.connect)()(NewAccountButton);
 
 /***/ },
-/* 296 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(297);
+	var content = __webpack_require__(301);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31624,10 +31759,10 @@
 	}
 
 /***/ },
-/* 297 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -31638,16 +31773,16 @@
 
 
 /***/ },
-/* 298 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(299);
+	var content = __webpack_require__(303);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31664,10 +31799,10 @@
 	}
 
 /***/ },
-/* 299 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -31678,7 +31813,7 @@
 
 
 /***/ },
-/* 300 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31689,11 +31824,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _DropzoneContainer = __webpack_require__(301);
+	var _DropzoneContainer = __webpack_require__(305);
 
 	var _DropzoneContainer2 = _interopRequireDefault(_DropzoneContainer);
 
-	var _FilterContainer = __webpack_require__(305);
+	var _FilterContainer = __webpack_require__(309);
 
 	var _FilterContainer2 = _interopRequireDefault(_FilterContainer);
 
@@ -31751,7 +31886,7 @@
 	module.exports = ProcessArea;
 
 /***/ },
-/* 301 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31762,7 +31897,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Dropzone = __webpack_require__(302);
+	var _Dropzone = __webpack_require__(306);
 
 	var _Dropzone2 = _interopRequireDefault(_Dropzone);
 
@@ -31813,7 +31948,7 @@
 	module.exports = DropzoneContainer;
 
 /***/ },
-/* 302 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31824,7 +31959,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(303);
+	__webpack_require__(307);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31860,16 +31995,16 @@
 	module.exports = Dropzone;
 
 /***/ },
-/* 303 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(304);
+	var content = __webpack_require__(308);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31886,10 +32021,10 @@
 	}
 
 /***/ },
-/* 304 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -31900,7 +32035,7 @@
 
 
 /***/ },
-/* 305 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31913,9 +32048,9 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _filters = __webpack_require__(306);
+	var _filters = __webpack_require__(310);
 
-	var _FilterOption = __webpack_require__(307);
+	var _FilterOption = __webpack_require__(311);
 
 	var _FilterOption2 = _interopRequireDefault(_FilterOption);
 
@@ -32001,7 +32136,7 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(FilterContainer);
 
 /***/ },
-/* 306 */
+/* 310 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32031,7 +32166,7 @@
 	};
 
 /***/ },
-/* 307 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32044,9 +32179,9 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _filters = __webpack_require__(306);
+	var _filters = __webpack_require__(310);
 
-	__webpack_require__(308);
+	__webpack_require__(312);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32096,16 +32231,16 @@
 	module.exports = (0, _reactRedux.connect)()(FilterOption);
 
 /***/ },
-/* 308 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(309);
+	var content = __webpack_require__(313);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32122,10 +32257,10 @@
 	}
 
 /***/ },
-/* 309 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
@@ -32134,91 +32269,6 @@
 
 	// exports
 
-
-/***/ },
-/* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(311);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(282)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".mainapp {\n  margin-top: 10px; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 312 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var setCurrentAccount = exports.setCurrentAccount = function setCurrentAccount(payload) {
-	  return {
-	    type: 'SET_CURRENT_ACCOUNT',
-	    payload: payload
-	  };
-	};
-
-/***/ },
-/* 313 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _underscore = __webpack_require__(272);
-
-	var _underscore2 = _interopRequireDefault(_underscore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var accounts = function accounts() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case 'SET_CURRENT_ACCOUNT':
-	      return Object.assign({}, state, action.payload);
-	  }
-	  return state;
-	};
-
-	exports.default = accounts;
 
 /***/ },
 /* 314 */
@@ -32230,7 +32280,7 @@
 	var content = __webpack_require__(315);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(279)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32250,12 +32300,12 @@
 /* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(282)();
+	exports = module.exports = __webpack_require__(278)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".modal-body .input-group {\n  width: 100%; }\n\n.modal-body .form-control {\n  width: 100%; }\n", ""]);
+	exports.push([module.id, ".mainapp {\n  margin-top: 10px; }\n", ""]);
 
 	// exports
 

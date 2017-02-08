@@ -10,6 +10,10 @@ const modal = function(state = {}, action) {
       let setEditModal = Object.assign({}, state)
       setEditModal.type = 'edit'
       return setEditModal
+    case 'SET_NEW_MODAL':
+      let setNewModal = Object.assign({}, state)
+      setNewModal.type = 'new'
+      return setNewModal
   }
   return state
 }

@@ -4,3 +4,9 @@ export const setCurrentAccount = function(payload) {
     payload
   }
 }
+
+export const emptyCurrentAccount = function() {
+  return {
+    type: 'EMPTY_CURRENT_ACCOUNT'
+  }
+}

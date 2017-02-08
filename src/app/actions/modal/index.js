@@ -10,3 +10,9 @@ export const setEditModal = function() {
     type: 'SET_EDIT_MODAL'
   }
 }
+
+export const setNewModal = function() {
+  return {
+    type: 'SET_NEW_MODAL'
+  }
+}
