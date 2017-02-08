@@ -28710,7 +28710,7 @@
 	});
 
 	store.subscribe(function () {
-	  // console.log(store.getState())
+	  console.log(store.getState());
 	});
 
 	module.exports = store;
