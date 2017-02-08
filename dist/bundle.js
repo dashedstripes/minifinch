@@ -31056,7 +31056,7 @@
 
 
 	// module
-	exports.push([module.id, ".navbar-minifinch {\n  background: #414a4d; }\n\n.navbar-brand {\n  color: #f6f7f8; }\n\n.nav li a {\n  color: #f6f7f8; }\n\n.navbar-toggle .icon-bar {\n  color: #f6f7f8; }\n", ""]);
+	exports.push([module.id, ".navbar-minifinch {\n  background: #414a4d; }\n\n.navbar-brand {\n  color: #fff; }\n\n.nav li a {\n  color: #fff; }\n\n.navbar-toggle .icon-bar {\n  color: #f6f7f8; }\n", ""]);
 
 	// exports
 
@@ -31823,7 +31823,7 @@
 
 
 	// module
-	exports.push([module.id, ".account-pill {\n  width: 100%;\n  white-space: normal;\n  border: 1px dotted #414a4d;\n  color: #414a4d; }\n\n.account-pill-item {\n  margin-bottom: 10px; }\n", ""]);
+	exports.push([module.id, ".account-pill {\n  width: 100%;\n  white-space: normal;\n  border: 1px solid #e8eaed;\n  color: #414a4d; }\n\n.account-pill-item {\n  margin-bottom: 10px; }\n", ""]);
 
 	// exports
 

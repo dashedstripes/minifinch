@@ -3,7 +3,7 @@
 .account-pill {
   width: 100%;
   white-space: normal;
-  border: 1px dotted $darkgrey;
+  border: 1px solid darken($lightgrey, 5%);
   color: $darkgrey;
 }
 
