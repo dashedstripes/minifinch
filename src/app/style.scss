@@ -28,3 +28,11 @@ body {
     background: darken($compliment, 5%);
   }
 }
+
+.modal.show.in {
+  background: rgba(0,0,0,0.7);
+}
+
+.modal-dialog {
+  margin-top: 150px;
+}

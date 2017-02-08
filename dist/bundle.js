@@ -30509,7 +30509,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  font-family: 'Lato', sans-serif;\n  background: #f6f7f8; }\n\n.btn {\n  border: 0px; }\n\n.btn-primary {\n  color: #fff;\n  background: #DF9F5A;\n  border: 0px; }\n  .btn-primary:hover {\n    background: #e3ab6f; }\n  .btn-primary:active {\n    background: #db9345 !important; }\n  .btn-primary:focus {\n    background: #db9345; }\n", ""]);
+	exports.push([module.id, "body {\n  font-family: 'Lato', sans-serif;\n  background: #f6f7f8; }\n\n.btn {\n  border: 0px; }\n\n.btn-primary {\n  color: #fff;\n  background: #DF9F5A;\n  border: 0px; }\n  .btn-primary:hover {\n    background: #e3ab6f; }\n  .btn-primary:active {\n    background: #db9345 !important; }\n  .btn-primary:focus {\n    background: #db9345; }\n\n.modal.show.in {\n  background: rgba(0, 0, 0, 0.7); }\n\n.modal-dialog {\n  margin-top: 150px; }\n", ""]);
 
 	// exports
 
@@ -31614,6 +31614,11 @@
 	      this.props.dispatch((0, _modal.setEditModal)());
 	    }
 	  }, {
+	    key: 'dragStart',
+	    value: function dragStart(e) {
+	      this.props.dispatch((0, _currentAccount.setCurrentAccount)(this.props.account));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -31621,7 +31626,7 @@
 	        { className: 'account-pill-item' },
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'btn btn-default account-pill', draggable: 'true', onClick: this.handleClick.bind(this) },
+	          { className: 'btn btn-default account-pill', draggable: 'true', onDragStart: this.dragStart.bind(this), onClick: this.handleClick.bind(this) },
 	          this.props.account.name
 	        )
 	      );
@@ -32010,11 +32015,21 @@
 	  }
 
 	  _createClass(Dropzone, [{
+	    key: 'handleDragOver',
+	    value: function handleDragOver(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'handleDrop',
+	    value: function handleDrop(e) {
+	      console.log(e);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'jumbotron text-center dropzone' },
+	        { className: 'jumbotron text-center dropzone', onDrop: this.handleDrop.bind(this), onDragOver: this.handleDragOver.bind(this) },
 	        this.props.title
 	      );
 	    }
