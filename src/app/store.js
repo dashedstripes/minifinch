@@ -18,7 +18,7 @@ let store = createStore(rootReducer, {
       token: '9gj2rgh08hgr08ing'
     }
   ]
-})
+}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 store.subscribe(() => {
   console.log(store.getState())

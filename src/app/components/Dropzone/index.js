@@ -22,13 +22,15 @@ class Dropzone extends React.Component {
     this.setState({
       account: this.props.currentAccount
     })
+    
     this.props.dispatch(setProcessAccount({
       type: this.props.type,
-      account: this.state.account
+      account: this.props.currentAccount
     }))
   }
   
   render() {
+    console.log(this.state.account)
     return (
        <div className="jumbotron text-center dropzone" onDrop={this.handleDrop.bind(this)} onDragOver={this.handleDragOver.bind(this)}>
          <p>{this.props.title}: {this.state.account.name}</p>

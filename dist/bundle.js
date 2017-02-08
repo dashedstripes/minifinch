@@ -62,23 +62,23 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _style = __webpack_require__(276);
+	var _style = __webpack_require__(277);
 
 	var _style2 = _interopRequireDefault(_style);
 
-	var _Layout = __webpack_require__(280);
+	var _Layout = __webpack_require__(281);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _NoMatch = __webpack_require__(291);
+	var _NoMatch = __webpack_require__(295);
 
 	var _NoMatch2 = _interopRequireDefault(_NoMatch);
 
-	var _Header = __webpack_require__(281);
+	var _Header = __webpack_require__(282);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Main = __webpack_require__(292);
+	var _Main = __webpack_require__(296);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
@@ -28707,7 +28707,7 @@
 	    email: 'admin@minifinchdemo.me',
 	    token: '9gj2rgh08hgr08ing'
 	  }]
-	});
+	}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 	store.subscribe(function () {
 	  console.log(store.getState());
@@ -28743,7 +28743,7 @@
 
 	var _currentAccount2 = _interopRequireDefault(_currentAccount);
 
-	var _process = __webpack_require__(318);
+	var _process = __webpack_require__(276);
 
 	var _process2 = _interopRequireDefault(_process);
 
@@ -30497,13 +30497,44 @@
 /* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _underscore = __webpack_require__(272);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var process = function process() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'SET_PROCESS_ACCOUNT':
+	      var processAccount = Object.assign({}, state);
+	      processAccount[action.payload.type] = action.payload.account;
+	      return processAccount;
+	  }
+	  return state;
+	};
+
+	exports.default = process;
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(277);
+	var content = __webpack_require__(278);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30520,10 +30551,10 @@
 	}
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -30534,7 +30565,7 @@
 
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports) {
 
 	/*
@@ -30590,7 +30621,7 @@
 
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30842,7 +30873,7 @@
 
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30853,15 +30884,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Header = __webpack_require__(281);
+	var _Header = __webpack_require__(282);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _ModalContainer = __webpack_require__(284);
+	var _ModalContainer = __webpack_require__(285);
 
 	var _ModalContainer2 = _interopRequireDefault(_ModalContainer);
 
-	var _style = __webpack_require__(289);
+	var _style = __webpack_require__(293);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -30901,7 +30932,7 @@
 	module.exports = Layout;
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30914,7 +30945,7 @@
 
 	var _reactRouter = __webpack_require__(178);
 
-	__webpack_require__(282);
+	__webpack_require__(283);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30991,16 +31022,16 @@
 	module.exports = Header;
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(283);
+	var content = __webpack_require__(284);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31017,10 +31048,10 @@
 	}
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -31031,7 +31062,7 @@
 
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31044,11 +31075,11 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _Modal = __webpack_require__(285);
+	var _Modal = __webpack_require__(286);
 
 	var _Modal2 = _interopRequireDefault(_Modal);
 
-	var _modal = __webpack_require__(286);
+	var _modal = __webpack_require__(288);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31087,7 +31118,7 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(ModalContainer);
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31100,15 +31131,15 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _accounts = __webpack_require__(294);
+	var _accounts = __webpack_require__(287);
 
-	var _modal = __webpack_require__(286);
+	var _modal = __webpack_require__(288);
 
-	var _ModalInput = __webpack_require__(316);
+	var _ModalInput = __webpack_require__(289);
 
 	var _ModalInput2 = _interopRequireDefault(_ModalInput);
 
-	__webpack_require__(287);
+	__webpack_require__(291);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31250,7 +31281,37 @@
 	module.exports = (0, _reactRedux.connect)()(Modal);
 
 /***/ },
-/* 286 */
+/* 287 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var setAccounts = exports.setAccounts = function setAccounts(payload) {
+	  return {
+	    type: 'SET_ACCOUNTS',
+	    payload: payload
+	  };
+	};
+
+	var newAccount = exports.newAccount = function newAccount(payload) {
+	  return {
+	    type: 'NEW_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+	var updateAccount = exports.updateAccount = function updateAccount(payload) {
+	  return {
+	    type: 'UPDATE_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+/***/ },
+/* 288 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31278,16 +31339,116 @@
 	};
 
 /***/ },
-/* 287 */
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(233);
+
+	var _currentAccount = __webpack_require__(290);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ModalInput = function (_React$Component) {
+	  _inherits(ModalInput, _React$Component);
+
+	  function ModalInput(props) {
+	    _classCallCheck(this, ModalInput);
+
+	    var _this = _possibleConstructorReturn(this, (ModalInput.__proto__ || Object.getPrototypeOf(ModalInput)).call(this, props));
+
+	    _this.state = {
+	      value: _this.props.value
+	    };
+	    return _this;
+	  }
+
+	  _createClass(ModalInput, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({
+	        value: e.target.value
+	      });
+	      this.props.dispatch((0, _currentAccount.updateCurrentAccount)({
+	        name: this.props.name.toLowerCase(),
+	        value: e.target.value
+	      }));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          this.props.name
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text', value: this.state.value, className: 'form-control', onChange: this.handleChange.bind(this) })
+	      );
+	    }
+	  }]);
+
+	  return ModalInput;
+	}(_react2.default.Component);
+
+	module.exports = (0, _reactRedux.connect)()(ModalInput);
+
+/***/ },
+/* 290 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var setCurrentAccount = exports.setCurrentAccount = function setCurrentAccount(payload) {
+	  return {
+	    type: 'SET_CURRENT_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+	var emptyCurrentAccount = exports.emptyCurrentAccount = function emptyCurrentAccount() {
+	  return {
+	    type: 'EMPTY_CURRENT_ACCOUNT'
+	  };
+	};
+
+	var updateCurrentAccount = exports.updateCurrentAccount = function updateCurrentAccount(payload) {
+	  return {
+	    type: 'UPDATE_CURRENT_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+/***/ },
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(288);
+	var content = __webpack_require__(292);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31304,10 +31465,10 @@
 	}
 
 /***/ },
-/* 288 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -31318,16 +31479,16 @@
 
 
 /***/ },
-/* 289 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(290);
+	var content = __webpack_require__(294);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31344,10 +31505,10 @@
 	}
 
 /***/ },
-/* 290 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -31358,7 +31519,7 @@
 
 
 /***/ },
-/* 291 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31403,7 +31564,7 @@
 	module.exports = NoMatch;
 
 /***/ },
-/* 292 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31414,15 +31575,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AccountsContainer = __webpack_require__(293);
+	var _AccountsContainer = __webpack_require__(297);
 
 	var _AccountsContainer2 = _interopRequireDefault(_AccountsContainer);
 
-	var _ProcessArea = __webpack_require__(304);
+	var _ProcessArea = __webpack_require__(306);
 
 	var _ProcessArea2 = _interopRequireDefault(_ProcessArea);
 
-	__webpack_require__(314);
+	__webpack_require__(317);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31481,7 +31642,7 @@
 	module.exports = Home;
 
 /***/ },
-/* 293 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31494,17 +31655,17 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _accounts = __webpack_require__(294);
+	var _accounts = __webpack_require__(287);
 
-	var _AccountPill = __webpack_require__(295);
+	var _AccountPill = __webpack_require__(298);
 
 	var _AccountPill2 = _interopRequireDefault(_AccountPill);
 
-	var _NewAccountButton = __webpack_require__(299);
+	var _NewAccountButton = __webpack_require__(301);
 
 	var _NewAccountButton2 = _interopRequireDefault(_NewAccountButton);
 
-	__webpack_require__(302);
+	__webpack_require__(304);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31558,37 +31719,7 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(AccountsContainer);
 
 /***/ },
-/* 294 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var setAccounts = exports.setAccounts = function setAccounts(payload) {
-	  return {
-	    type: 'SET_ACCOUNTS',
-	    payload: payload
-	  };
-	};
-
-	var newAccount = exports.newAccount = function newAccount(payload) {
-	  return {
-	    type: 'NEW_ACCOUNT',
-	    payload: payload
-	  };
-	};
-
-	var updateAccount = exports.updateAccount = function updateAccount(payload) {
-	  return {
-	    type: 'UPDATE_ACCOUNT',
-	    payload: payload
-	  };
-	};
-
-/***/ },
-/* 295 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31601,11 +31732,11 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _modal = __webpack_require__(286);
+	var _modal = __webpack_require__(288);
 
-	var _currentAccount = __webpack_require__(296);
+	var _currentAccount = __webpack_require__(290);
 
-	__webpack_require__(297);
+	__webpack_require__(299);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31658,45 +31789,16 @@
 	module.exports = (0, _reactRedux.connect)()(AccountPill);
 
 /***/ },
-/* 296 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var setCurrentAccount = exports.setCurrentAccount = function setCurrentAccount(payload) {
-	  return {
-	    type: 'SET_CURRENT_ACCOUNT',
-	    payload: payload
-	  };
-	};
-
-	var emptyCurrentAccount = exports.emptyCurrentAccount = function emptyCurrentAccount() {
-	  return {
-	    type: 'EMPTY_CURRENT_ACCOUNT'
-	  };
-	};
-
-	var updateCurrentAccount = exports.updateCurrentAccount = function updateCurrentAccount(payload) {
-	  return {
-	    type: 'UPDATE_CURRENT_ACCOUNT',
-	    payload: payload
-	  };
-	};
-
-/***/ },
-/* 297 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(298);
+	var content = __webpack_require__(300);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31713,10 +31815,10 @@
 	}
 
 /***/ },
-/* 298 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -31727,7 +31829,7 @@
 
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31740,11 +31842,11 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _currentAccount = __webpack_require__(296);
+	var _currentAccount = __webpack_require__(290);
 
-	var _modal = __webpack_require__(286);
+	var _modal = __webpack_require__(288);
 
-	__webpack_require__(300);
+	__webpack_require__(302);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31788,46 +31890,6 @@
 	module.exports = (0, _reactRedux.connect)()(NewAccountButton);
 
 /***/ },
-/* 300 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(301);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(278)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".new-account-button {\n  width: 100%; }\n", ""]);
-
-	// exports
-
-
-/***/ },
 /* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31837,7 +31899,7 @@
 	var content = __webpack_require__(303);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31857,7 +31919,47 @@
 /* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".new-account-button {\n  width: 100%; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(305);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(280)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -31868,7 +31970,7 @@
 
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31879,11 +31981,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _DropzoneContainer = __webpack_require__(305);
+	var _DropzoneContainer = __webpack_require__(307);
 
 	var _DropzoneContainer2 = _interopRequireDefault(_DropzoneContainer);
 
-	var _FilterContainer = __webpack_require__(309);
+	var _FilterContainer = __webpack_require__(312);
 
 	var _FilterContainer2 = _interopRequireDefault(_FilterContainer);
 
@@ -31941,7 +32043,7 @@
 	module.exports = ProcessArea;
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31952,7 +32054,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Dropzone = __webpack_require__(306);
+	var _Dropzone = __webpack_require__(308);
 
 	var _Dropzone2 = _interopRequireDefault(_Dropzone);
 
@@ -32003,7 +32105,7 @@
 	module.exports = DropzoneContainer;
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32016,9 +32118,9 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _process = __webpack_require__(317);
+	var _process = __webpack_require__(309);
 
-	__webpack_require__(307);
+	__webpack_require__(310);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32055,14 +32157,16 @@
 	      this.setState({
 	        account: this.props.currentAccount
 	      });
+
 	      this.props.dispatch((0, _process.setProcessAccount)({
 	        type: this.props.type,
-	        account: this.state.account
+	        account: this.props.currentAccount
 	      }));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.state.account);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'jumbotron text-center dropzone', onDrop: this.handleDrop.bind(this), onDragOver: this.handleDragOver.bind(this) },
@@ -32087,16 +32191,32 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(Dropzone);
 
 /***/ },
-/* 307 */
+/* 309 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var setProcessAccount = exports.setProcessAccount = function setProcessAccount(payload) {
+	  return {
+	    type: 'SET_PROCESS_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+/***/ },
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(308);
+	var content = __webpack_require__(311);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32113,10 +32233,10 @@
 	}
 
 /***/ },
-/* 308 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -32127,7 +32247,7 @@
 
 
 /***/ },
-/* 309 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32140,9 +32260,9 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _filters = __webpack_require__(310);
+	var _filters = __webpack_require__(313);
 
-	var _FilterOption = __webpack_require__(311);
+	var _FilterOption = __webpack_require__(314);
 
 	var _FilterOption2 = _interopRequireDefault(_FilterOption);
 
@@ -32228,7 +32348,7 @@
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(FilterContainer);
 
 /***/ },
-/* 310 */
+/* 313 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32258,7 +32378,7 @@
 	};
 
 /***/ },
-/* 311 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32271,9 +32391,9 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	var _filters = __webpack_require__(310);
+	var _filters = __webpack_require__(313);
 
-	__webpack_require__(312);
+	__webpack_require__(315);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32323,16 +32443,16 @@
 	module.exports = (0, _reactRedux.connect)()(FilterOption);
 
 /***/ },
-/* 312 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(313);
+	var content = __webpack_require__(316);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32349,10 +32469,10 @@
 	}
 
 /***/ },
-/* 313 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -32363,16 +32483,16 @@
 
 
 /***/ },
-/* 314 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(315);
+	var content = __webpack_require__(318);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
+	var update = __webpack_require__(280)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32389,10 +32509,10 @@
 	}
 
 /***/ },
-/* 315 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(278)();
+	exports = module.exports = __webpack_require__(279)();
 	// imports
 
 
@@ -32401,124 +32521,6 @@
 
 	// exports
 
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(233);
-
-	var _currentAccount = __webpack_require__(296);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ModalInput = function (_React$Component) {
-	  _inherits(ModalInput, _React$Component);
-
-	  function ModalInput(props) {
-	    _classCallCheck(this, ModalInput);
-
-	    var _this = _possibleConstructorReturn(this, (ModalInput.__proto__ || Object.getPrototypeOf(ModalInput)).call(this, props));
-
-	    _this.state = {
-	      value: _this.props.value
-	    };
-	    return _this;
-	  }
-
-	  _createClass(ModalInput, [{
-	    key: 'handleChange',
-	    value: function handleChange(e) {
-	      this.setState({
-	        value: e.target.value
-	      });
-	      this.props.dispatch((0, _currentAccount.updateCurrentAccount)({
-	        name: this.props.name.toLowerCase(),
-	        value: e.target.value
-	      }));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          this.props.name
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', value: this.state.value, className: 'form-control', onChange: this.handleChange.bind(this) })
-	      );
-	    }
-	  }]);
-
-	  return ModalInput;
-	}(_react2.default.Component);
-
-	module.exports = (0, _reactRedux.connect)()(ModalInput);
-
-/***/ },
-/* 317 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var setProcessAccount = exports.setProcessAccount = function setProcessAccount(payload) {
-	  return {
-	    type: 'SET_PROCESS_ACCOUNT',
-	    payload: payload
-	  };
-	};
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _underscore = __webpack_require__(272);
-
-	var _underscore2 = _interopRequireDefault(_underscore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var process = function process() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case 'SET_PROCESS_ACCOUNT':
-	      var processAccount = Object.assign({}, state);
-	      processAccount[action.payload.type] = action.payload.account;
-	      return processAccount;
-	  }
-	  return state;
-	};
-
-	exports.default = process;
 
 /***/ }
 /******/ ]);
