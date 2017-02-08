@@ -10,32 +10,38 @@ class FilterContainer extends React.Component {
       {
         id: 1,
         enabled: false,
-        name: 'Ticket Forms'
+        name: 'Ticket Forms',
+        slug: 'ticket_forms'
       },
       {
         id: 2,
         enabled: false,
-        name: 'Ticket fields'
+        name: 'Ticket fields',
+        slug: 'ticket_fields'
       },
       {
         id: 3,
         enabled: false,
-        name: 'Groups'
+        name: 'Groups',
+        slug: 'groups'
       },
       {
         id: 4,
         enabled: false,
-        name: 'User fields'
+        name: 'User fields',
+        slug: 'user_fields'
       },
       {
         id: 5,
         enabled: false,
-        name: 'Organization fields'
+        name: 'Organization fields',
+        slug: 'organization_fields'
       },
       {
         id: 6,
         enabled: false,
-        name: 'Organizations'
+        name: 'Organizations',
+        slug: 'organizations'
       }
     ]
     this.props.dispatch(setFilters(filters))
