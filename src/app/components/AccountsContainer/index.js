@@ -8,25 +8,7 @@ import './style.scss'
 class AccountsContainer extends React.Component {
   constructor(props) {
     super(props)
-    let accounts = [
-        {
-          id: 1,
-          name: 'Skycab',
-          subdomain: 'skycab',
-          email: 'admin@skycab.me',
-          token: '1234567890qwertyuiop',
-          selected: false
-        },
-        {
-          id: 2,
-          name: 'SkyGaming',
-          subdomain: 'skygaming',
-          email: 'admin@skygaming.me',
-          token: 'jf83mf01kfue7d56',
-          selected: false
-        }
-      ]
-    this.props.dispatch(setAccounts(accounts))
+    // this.props.dispatch(setAccounts())
   }
   
   render() {

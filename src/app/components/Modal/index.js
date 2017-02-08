@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { newAccount, updateAccount } from '../../actions/accounts'
 import { setModalVisible } from '../../actions/modal'
 import ModalInput from '../ModalInput'
 import './style.scss'
@@ -10,7 +11,12 @@ class Modal extends React.Component {
   }
 
   handleSave(e) {
-    console.log(this.props.account)
+    if(this.props.type == 'edit') {
+      this.props.dispatch(updateAccount(this.props.account))
+    }else {
+      this.props.dispatch(newAccount(this.props.account))
+    }
+    this.props.dispatch(setModalVisible(false))
   }
 
   handleClose(e) {

@@ -30386,6 +30386,8 @@
 	  value: true
 	});
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	var _underscore = __webpack_require__(272);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
@@ -30396,10 +30398,35 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 
-	  switch (action.type) {
-	    case 'SET_ACCOUNTS':
-	      return Object.assign([], state, action.payload);
-	  }
+	  var _ret = function () {
+	    switch (action.type) {
+	      case 'SET_ACCOUNTS':
+	        return {
+	          v: Object.assign([], state, action.payload)
+	        };
+	      case 'NEW_ACCOUNT':
+	        var newAccountArray = Object.assign([], state);
+	        var newAccount = action.payload;
+	        newAccount.id = Date.now();
+	        newAccount.selected = false;
+	        newAccountArray.push(newAccount);
+	        return {
+	          v: newAccountArray
+	        };
+	      case 'UPDATE_ACCOUNT':
+	        var updateAccount = Object.assign([], state);
+	        updateAccount.forEach(function (account, index) {
+	          if (account.id == action.payload.id) {
+	            updateAccount[index] = action.payload;
+	          }
+	        });
+	        return {
+	          v: updateAccount
+	        };
+	    }
+	  }();
+
+	  if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
 	  return state;
 	};
 
@@ -31054,6 +31081,8 @@
 
 	var _reactRedux = __webpack_require__(233);
 
+	var _accounts = __webpack_require__(294);
+
 	var _modal = __webpack_require__(286);
 
 	var _ModalInput = __webpack_require__(316);
@@ -31082,7 +31111,12 @@
 	  _createClass(Modal, [{
 	    key: 'handleSave',
 	    value: function handleSave(e) {
-	      console.log(this.props.account);
+	      if (this.props.type == 'edit') {
+	        this.props.dispatch((0, _accounts.updateAccount)(this.props.account));
+	      } else {
+	        this.props.dispatch((0, _accounts.newAccount)(this.props.account));
+	      }
+	      this.props.dispatch((0, _modal.setModalVisible)(false));
 	    }
 	  }, {
 	    key: 'handleClose',
@@ -31467,25 +31501,8 @@
 	  function AccountsContainer(props) {
 	    _classCallCheck(this, AccountsContainer);
 
-	    var _this = _possibleConstructorReturn(this, (AccountsContainer.__proto__ || Object.getPrototypeOf(AccountsContainer)).call(this, props));
-
-	    var accounts = [{
-	      id: 1,
-	      name: 'Skycab',
-	      subdomain: 'skycab',
-	      email: 'admin@skycab.me',
-	      token: '1234567890qwertyuiop',
-	      selected: false
-	    }, {
-	      id: 2,
-	      name: 'SkyGaming',
-	      subdomain: 'skygaming',
-	      email: 'admin@skygaming.me',
-	      token: 'jf83mf01kfue7d56',
-	      selected: false
-	    }];
-	    _this.props.dispatch((0, _accounts.setAccounts)(accounts));
-	    return _this;
+	    return _possibleConstructorReturn(this, (AccountsContainer.__proto__ || Object.getPrototypeOf(AccountsContainer)).call(this, props));
+	    // this.props.dispatch(setAccounts())
 	  }
 
 	  _createClass(AccountsContainer, [{
@@ -31533,6 +31550,20 @@
 	var setAccounts = exports.setAccounts = function setAccounts(payload) {
 	  return {
 	    type: 'SET_ACCOUNTS',
+	    payload: payload
+	  };
+	};
+
+	var newAccount = exports.newAccount = function newAccount(payload) {
+	  return {
+	    type: 'NEW_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+	var updateAccount = exports.updateAccount = function updateAccount(payload) {
+	  return {
+	    type: 'UPDATE_ACCOUNT',
 	    payload: payload
 	  };
 	};
