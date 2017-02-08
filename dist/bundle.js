@@ -28701,7 +28701,7 @@
 	    email: 'admin@skycab.me',
 	    token: '8f02kg74ysg97g'
 	  }, {
-	    id: Date.now(),
+	    id: Date.now() + 1,
 	    name: 'Minifinch Demo',
 	    subdomain: 'minifinchdemo',
 	    email: 'admin@minifinchdemo.me',
@@ -30559,7 +30559,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  font-family: 'Lato', sans-serif;\n  background: #f6f7f8; }\n\n.btn {\n  border: 0px; }\n\n.btn-primary {\n  color: #fff;\n  background: #DF9F5A;\n  border: 0px; }\n  .btn-primary:hover {\n    background: #e3ab6f; }\n  .btn-primary:active {\n    background: #db9345 !important; }\n  .btn-primary:focus {\n    background: #db9345; }\n\n.modal.show.in {\n  background: rgba(0, 0, 0, 0.7); }\n\n.modal-dialog {\n  margin-top: 150px; }\n", ""]);
+	exports.push([module.id, "*:focus {\n  outline: none !important; }\n\nbody {\n  font-family: 'Lato', sans-serif;\n  background: #f6f7f8; }\n\ntextarea:focus, input:focus {\n  outline: none !important; }\n\n.btn {\n  border: 0px; }\n\n.btn-primary {\n  color: #fff;\n  background: #DF9F5A;\n  border: 0px; }\n  .btn-primary:hover {\n    background: #e3ab6f; }\n  .btn-primary:active {\n    background: #db9345 !important; }\n  .btn-primary:focus {\n    background: #db9345; }\n\n.modal.show.in {\n  background: rgba(0, 0, 0, 0.7); }\n\n.modal-dialog {\n  margin-top: 150px; }\n", ""]);
 
 	// exports
 

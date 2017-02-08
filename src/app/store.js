@@ -11,7 +11,7 @@ let store = createStore(rootReducer, {
       token: '8f02kg74ysg97g'
     },
     {
-      id: Date.now(),
+      id: Date.now() + 1,
       name: 'Minifinch Demo',
       subdomain: 'minifinchdemo',
       email: 'admin@minifinchdemo.me',
