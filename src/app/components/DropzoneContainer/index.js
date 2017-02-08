@@ -7,10 +7,10 @@ class DropzoneContainer extends React.Component {
        <div>
          <div className="row">
            <div className="col-md-6">
-             <Dropzone title="Source"/>
+             <Dropzone title="Source" type="source"/>
            </div>
            <div className="col-md-6">
-             <Dropzone title="Destination"/>
+             <Dropzone title="Destination" type="destination"/>
            </div>
          </div>
        </div>

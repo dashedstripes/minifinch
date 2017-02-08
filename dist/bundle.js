@@ -28693,10 +28693,24 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _redux.createStore)(_reducers2.default);
+	var store = (0, _redux.createStore)(_reducers2.default, {
+	  accounts: [{
+	    id: Date.now(),
+	    name: 'Skycab',
+	    subdomain: 'skycab',
+	    email: 'admin@skycab.me',
+	    token: '8f02kg74ysg97g'
+	  }, {
+	    id: Date.now(),
+	    name: 'Minifinch Demo',
+	    subdomain: 'minifinchdemo',
+	    email: 'admin@minifinchdemo.me',
+	    token: '9gj2rgh08hgr08ing'
+	  }]
+	});
 
 	store.subscribe(function () {
-	  return console.log(store.getState());
+	  // console.log(store.getState())
 	});
 
 	module.exports = store;
@@ -28729,13 +28743,18 @@
 
 	var _currentAccount2 = _interopRequireDefault(_currentAccount);
 
+	var _process = __webpack_require__(318);
+
+	var _process2 = _interopRequireDefault(_process);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var rootReducer = (0, _redux.combineReducers)({
 	  filters: _filters2.default,
 	  modal: _modal2.default,
 	  accounts: _accounts2.default,
-	  currentAccount: _currentAccount2.default
+	  currentAccount: _currentAccount2.default,
+	  process: _process2.default
 	});
 
 	exports.default = rootReducer;
@@ -31966,12 +31985,12 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-md-6' },
-	            _react2.default.createElement(_Dropzone2.default, { title: 'Source' })
+	            _react2.default.createElement(_Dropzone2.default, { title: 'Source', type: 'source' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-md-6' },
-	            _react2.default.createElement(_Dropzone2.default, { title: 'Destination' })
+	            _react2.default.createElement(_Dropzone2.default, { title: 'Destination', type: 'destination' })
 	          )
 	        )
 	      );
@@ -31995,6 +32014,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(233);
+
+	var _process = __webpack_require__(317);
+
 	__webpack_require__(307);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -32008,21 +32031,34 @@
 	var Dropzone = function (_React$Component) {
 	  _inherits(Dropzone, _React$Component);
 
-	  function Dropzone() {
+	  function Dropzone(props) {
 	    _classCallCheck(this, Dropzone);
 
-	    return _possibleConstructorReturn(this, (Dropzone.__proto__ || Object.getPrototypeOf(Dropzone)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Dropzone.__proto__ || Object.getPrototypeOf(Dropzone)).call(this, props));
+
+	    _this.state = {
+	      account: {}
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Dropzone, [{
 	    key: 'handleDragOver',
 	    value: function handleDragOver(e) {
 	      e.preventDefault();
+	      // $(e.target).addClass('dropzone-hover')
 	    }
 	  }, {
 	    key: 'handleDrop',
 	    value: function handleDrop(e) {
-	      console.log(e);
+	      // $(e.target).removeClass('dropzone-hover')
+	      this.setState({
+	        account: this.props.currentAccount
+	      });
+	      this.props.dispatch((0, _process.setProcessAccount)({
+	        type: this.props.type,
+	        account: this.state.account
+	      }));
 	    }
 	  }, {
 	    key: 'render',
@@ -32030,7 +32066,13 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'jumbotron text-center dropzone', onDrop: this.handleDrop.bind(this), onDragOver: this.handleDragOver.bind(this) },
-	        this.props.title
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.title,
+	          ': ',
+	          this.state.account.name
+	        )
 	      );
 	    }
 	  }]);
@@ -32038,7 +32080,11 @@
 	  return Dropzone;
 	}(_react2.default.Component);
 
-	module.exports = Dropzone;
+	function mapStateToProps(state) {
+	  return state;
+	}
+
+	module.exports = (0, _reactRedux.connect)(mapStateToProps)(Dropzone);
 
 /***/ },
 /* 307 */
@@ -32075,7 +32121,7 @@
 
 
 	// module
-	exports.push([module.id, ".dropzone {\n  margin-bottom: 0px;\n  color: #fff;\n  background: #3C768C; }\n", ""]);
+	exports.push([module.id, ".dropzone {\n  margin-bottom: 0px;\n  color: #fff;\n  background: #3C768C; }\n  .dropzone p {\n    font-size: 1em; }\n    .dropzone p:last-of-type {\n      margin-bottom: 0px; }\n  .dropzone hr {\n    border-top-color: #f6f7f8; }\n\n.dropzone-hover {\n  background: #4b94b0; }\n", ""]);
 
 	// exports
 
@@ -32426,6 +32472,53 @@
 	}(_react2.default.Component);
 
 	module.exports = (0, _reactRedux.connect)()(ModalInput);
+
+/***/ },
+/* 317 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var setProcessAccount = exports.setProcessAccount = function setProcessAccount(payload) {
+	  return {
+	    type: 'SET_PROCESS_ACCOUNT',
+	    payload: payload
+	  };
+	};
+
+/***/ },
+/* 318 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _underscore = __webpack_require__(272);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var process = function process() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'SET_PROCESS_ACCOUNT':
+	      var processAccount = Object.assign({}, state);
+	      processAccount[action.payload.type] = action.payload.account;
+	      return processAccount;
+	  }
+	  return state;
+	};
+
+	exports.default = process;
 
 /***/ }
 /******/ ]);

@@ -4,4 +4,20 @@
   margin-bottom: 0px;
   color: $white;
   background: $brand;
+
+  p {
+    font-size: 1em;
+
+    &:last-of-type {
+      margin-bottom: 0px;
+    }
+  }
+
+  hr {
+    border-top-color: $lightgrey;
+  }
+}
+
+.dropzone-hover {
+  background: lighten($brand, 10%);
 }
