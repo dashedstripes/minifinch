@@ -10,3 +10,10 @@ export const emptyCurrentAccount = function() {
     type: 'EMPTY_CURRENT_ACCOUNT'
   }
 }
+
+export const updateCurrentAccount = function(payload) {
+  return {
+    type: 'UPDATE_CURRENT_ACCOUNT',
+    payload
+  }
+}

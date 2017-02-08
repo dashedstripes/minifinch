@@ -16,6 +16,14 @@ class AccountsContainer extends React.Component {
           email: 'admin@skycab.me',
           token: '1234567890qwertyuiop',
           selected: false
+        },
+        {
+          id: 2,
+          name: 'SkyGaming',
+          subdomain: 'skygaming',
+          email: 'admin@skygaming.me',
+          token: 'jf83mf01kfue7d56',
+          selected: false
         }
       ]
     this.props.dispatch(setAccounts(accounts))

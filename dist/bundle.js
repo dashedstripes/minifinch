@@ -30428,6 +30428,10 @@
 	  switch (action.type) {
 	    case 'SET_CURRENT_ACCOUNT':
 	      return Object.assign({}, state, action.payload);
+	    case 'UPDATE_CURRENT_ACCOUNT':
+	      var updateCurrentAccount = Object.assign({}, state);
+	      updateCurrentAccount[action.payload.name] = action.payload.value;
+	      return updateCurrentAccount;
 	    case 'EMPTY_CURRENT_ACCOUNT':
 	      return {
 	        id: Date.now(),
@@ -31052,6 +31056,10 @@
 
 	var _modal = __webpack_require__(286);
 
+	var _ModalInput = __webpack_require__(316);
+
+	var _ModalInput2 = _interopRequireDefault(_ModalInput);
+
 	__webpack_require__(287);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31072,9 +31080,9 @@
 	  }
 
 	  _createClass(Modal, [{
-	    key: 'textChange',
-	    value: function textChange(e) {
-	      console.log(e.target.value);
+	    key: 'handleSave',
+	    value: function handleSave(e) {
+	      console.log(this.props.account);
 	    }
 	  }, {
 	    key: 'handleClose',
@@ -31129,25 +31137,13 @@
 	                    _react2.default.createElement(
 	                      'div',
 	                      { className: 'input-group' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { htmlFor: '' },
-	                        'Name'
-	                      ),
-	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.name, className: 'form-control', onChange: this.textChange.bind(this) })
+	                      _react2.default.createElement(_ModalInput2.default, { id: this.props.account.id, name: 'Name', value: this.props.account.name })
 	                    ),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
 	                      'div',
 	                      { className: 'input-group' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { htmlFor: '' },
-	                        'Subdomain'
-	                      ),
-	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.subdomain, className: 'form-control', onChange: this.textChange.bind(this) })
+	                      _react2.default.createElement(_ModalInput2.default, { id: this.props.account.id, name: 'Subdomain', value: this.props.account.subdomain })
 	                    )
 	                  ),
 	                  _react2.default.createElement(
@@ -31156,25 +31152,13 @@
 	                    _react2.default.createElement(
 	                      'div',
 	                      { className: 'input-group' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { htmlFor: '' },
-	                        'Email'
-	                      ),
-	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.email, className: 'form-control', onChange: this.textChange.bind(this) })
+	                      _react2.default.createElement(_ModalInput2.default, { id: this.props.account.id, name: 'Email', value: this.props.account.email })
 	                    ),
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
 	                      'div',
 	                      { className: 'input-group' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { htmlFor: '' },
-	                        'Token'
-	                      ),
-	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', { type: 'text', value: this.props.account.token, className: 'form-control', onChange: this.textChange.bind(this) })
+	                      _react2.default.createElement(_ModalInput2.default, { id: this.props.account.id, name: 'Token', value: this.props.account.token })
 	                    )
 	                  )
 	                )
@@ -31189,12 +31173,12 @@
 	                ),
 	                this.props.type == 'edit' && _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-primary' },
+	                  { type: 'button', className: 'btn btn-primary', onClick: this.handleSave.bind(this) },
 	                  'Save changes'
 	                ),
 	                this.props.type == 'new' && _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-primary' },
+	                  { type: 'button', className: 'btn btn-primary', onClick: this.handleSave.bind(this) },
 	                  'Create account'
 	                )
 	              )
@@ -31492,6 +31476,13 @@
 	      email: 'admin@skycab.me',
 	      token: '1234567890qwertyuiop',
 	      selected: false
+	    }, {
+	      id: 2,
+	      name: 'SkyGaming',
+	      subdomain: 'skygaming',
+	      email: 'admin@skygaming.me',
+	      token: 'jf83mf01kfue7d56',
+	      selected: false
 	    }];
 	    _this.props.dispatch((0, _accounts.setAccounts)(accounts));
 	    return _this;
@@ -31630,6 +31621,13 @@
 	var emptyCurrentAccount = exports.emptyCurrentAccount = function emptyCurrentAccount() {
 	  return {
 	    type: 'EMPTY_CURRENT_ACCOUNT'
+	  };
+	};
+
+	var updateCurrentAccount = exports.updateCurrentAccount = function updateCurrentAccount(payload) {
+	  return {
+	    type: 'UPDATE_CURRENT_ACCOUNT',
+	    payload: payload
 	  };
 	};
 
@@ -32311,6 +32309,77 @@
 
 	// exports
 
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(233);
+
+	var _currentAccount = __webpack_require__(296);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ModalInput = function (_React$Component) {
+	  _inherits(ModalInput, _React$Component);
+
+	  function ModalInput(props) {
+	    _classCallCheck(this, ModalInput);
+
+	    var _this = _possibleConstructorReturn(this, (ModalInput.__proto__ || Object.getPrototypeOf(ModalInput)).call(this, props));
+
+	    _this.state = {
+	      value: _this.props.value
+	    };
+	    return _this;
+	  }
+
+	  _createClass(ModalInput, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState({
+	        value: e.target.value
+	      });
+	      this.props.dispatch((0, _currentAccount.updateCurrentAccount)({
+	        name: this.props.name.toLowerCase(),
+	        value: e.target.value
+	      }));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          this.props.name
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text', value: this.state.value, className: 'form-control', onChange: this.handleChange.bind(this) })
+	      );
+	    }
+	  }]);
+
+	  return ModalInput;
+	}(_react2.default.Component);
+
+	module.exports = (0, _reactRedux.connect)()(ModalInput);
 
 /***/ }
 /******/ ]);

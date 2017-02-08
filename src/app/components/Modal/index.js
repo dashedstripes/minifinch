@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setModalVisible } from '../../actions/modal'
+import ModalInput from '../ModalInput'
 import './style.scss'
 
 class Modal extends React.Component {
@@ -8,8 +9,8 @@ class Modal extends React.Component {
     super(props)
   }
 
-  textChange(e) {
-    console.log(e.target.value)
+  handleSave(e) {
+    console.log(this.props.account)
   }
 
   handleClose(e) {
@@ -35,28 +36,20 @@ class Modal extends React.Component {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="input-group">
-                      <label htmlFor="">Name</label>
-                      <br/>
-                      <input type="text" value={this.props.account.name} className="form-control" onChange={this.textChange.bind(this)}/>
+                      <ModalInput id={this.props.account.id} name="Name" value={this.props.account.name}/>
                     </div>
                     <br/>
                     <div className="input-group">
-                      <label htmlFor="">Subdomain</label>
-                      <br/>
-                      <input type="text" value={this.props.account.subdomain} className="form-control" onChange={this.textChange.bind(this)}/>
+                      <ModalInput id={this.props.account.id} name="Subdomain" value={this.props.account.subdomain}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="input-group">
-                      <label htmlFor="">Email</label>
-                      <br/>
-                      <input type="text" value={this.props.account.email} className="form-control" onChange={this.textChange.bind(this)}/>
+                      <ModalInput id={this.props.account.id} name="Email" value={this.props.account.email}/>
                     </div>
                     <br/>
                     <div className="input-group">
-                      <label htmlFor="">Token</label>
-                      <br/>
-                      <input type="text" value={this.props.account.token} className="form-control" onChange={this.textChange.bind(this)}/>
+                      <ModalInput id={this.props.account.id} name="Token" value={this.props.account.token}/>
                     </div>
                   </div>
                 </div>
@@ -64,10 +57,10 @@ class Modal extends React.Component {
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" onClick={this.handleClose.bind(this)}>Close</button>
                 {this.props.type == 'edit' &&
-                  <button type="button" className="btn btn-primary">Save changes</button>
+                  <button type="button" className="btn btn-primary" onClick={this.handleSave.bind(this)}>Save changes</button>
                 }
                 {this.props.type == 'new' &&
-                  <button type="button" className="btn btn-primary">Create account</button>
+                  <button type="button" className="btn btn-primary" onClick={this.handleSave.bind(this)}>Create account</button>
                 }
               </div>
             </div>
