@@ -8,8 +8,8 @@ class NewAccountButton extends React.Component {
   handleClick(e) {
     e.preventDefault()
     this.props.dispatch(emptyCurrentAccount())
-    this.props.dispatch(setModalVisible(true))
     this.props.dispatch(setNewModal())
+    this.props.dispatch(setModalVisible(true))
   }
   
   render() {

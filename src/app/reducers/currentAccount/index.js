@@ -4,12 +4,14 @@ const accounts = function(state = {}, action) {
   switch (action.type) {
     case 'SET_CURRENT_ACCOUNT':
       return Object.assign({}, state, action.payload)
-    case 'EMPTY_CURRENT_ACCCOUNT':
+    case 'EMPTY_CURRENT_ACCOUNT':
       return {
+        id: Date.now(),
         name: '',
         subdomain: '',
         email: '',
-        token: ''
+        token: '',
+        selected: false
       }
   }
   return state

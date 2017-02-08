@@ -30428,12 +30428,14 @@
 	  switch (action.type) {
 	    case 'SET_CURRENT_ACCOUNT':
 	      return Object.assign({}, state, action.payload);
-	    case 'EMPTY_CURRENT_ACCCOUNT':
+	    case 'EMPTY_CURRENT_ACCOUNT':
 	      return {
+	        id: Date.now(),
 	        name: '',
 	        subdomain: '',
 	        email: '',
-	        token: ''
+	        token: '',
+	        selected: false
 	      };
 	  }
 	  return state;
@@ -31713,8 +31715,8 @@
 	    value: function handleClick(e) {
 	      e.preventDefault();
 	      this.props.dispatch((0, _currentAccount.emptyCurrentAccount)());
-	      this.props.dispatch((0, _modal.setModalVisible)(true));
 	      this.props.dispatch((0, _modal.setNewModal)());
+	      this.props.dispatch((0, _modal.setModalVisible)(true));
 	    }
 	  }, {
 	    key: 'render',
