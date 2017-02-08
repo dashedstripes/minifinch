@@ -32557,6 +32557,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(233);
+
 	__webpack_require__(320);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -32577,11 +32579,16 @@
 	  }
 
 	  _createClass(StartButton, [{
+	    key: 'handleClick',
+	    value: function handleClick(e) {
+	      console.log(this.props);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'button',
-	        { className: 'btn btn-primary start-button' },
+	        { className: 'btn btn-primary start-button', onClick: this.handleClick.bind(this) },
 	        'Start'
 	      );
 	    }
@@ -32590,7 +32597,11 @@
 	  return StartButton;
 	}(_react2.default.Component);
 
-	module.exports = StartButton;
+	function mapStateToProps(state) {
+	  return state;
+	}
+
+	module.exports = (0, _reactRedux.connect)(mapStateToProps)(StartButton);
 
 /***/ },
 /* 320 */
