@@ -31583,6 +31583,10 @@
 
 	var _ProcessArea2 = _interopRequireDefault(_ProcessArea);
 
+	var _StartButton = __webpack_require__(319);
+
+	var _StartButton2 = _interopRequireDefault(_StartButton);
+
 	__webpack_require__(317);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31623,9 +31627,22 @@
 	              'div',
 	              { className: 'col-md-10' },
 	              _react2.default.createElement(
-	                'h4',
-	                null,
-	                'Process Area'
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'text-left col-md-6' },
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'Process Area'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'text-right col-md-6' },
+	                  _react2.default.createElement(_StartButton2.default, null)
+	                )
 	              ),
 	              _react2.default.createElement('hr', null),
 	              _react2.default.createElement(_ProcessArea2.default, null)
@@ -32524,6 +32541,93 @@
 
 	// module
 	exports.push([module.id, ".mainapp {\n  margin-top: 10px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 319 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(320);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var StartButton = function (_React$Component) {
+	  _inherits(StartButton, _React$Component);
+
+	  function StartButton() {
+	    _classCallCheck(this, StartButton);
+
+	    return _possibleConstructorReturn(this, (StartButton.__proto__ || Object.getPrototypeOf(StartButton)).apply(this, arguments));
+	  }
+
+	  _createClass(StartButton, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'button',
+	        { className: 'btn btn-primary start-button' },
+	        'Start'
+	      );
+	    }
+	  }]);
+
+	  return StartButton;
+	}(_react2.default.Component);
+
+	module.exports = StartButton;
+
+/***/ },
+/* 320 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(321);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(280)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 321 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(279)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".start-button {\n  padding: 10px 40px; }\n", ""]);
 
 	// exports
 
