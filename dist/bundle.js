@@ -30893,10 +30893,13 @@
 	var Layout = function (_React$Component) {
 	  _inherits(Layout, _React$Component);
 
-	  function Layout() {
+	  function Layout(props) {
 	    _classCallCheck(this, Layout);
 
-	    return _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this, props));
+
+	    var socket = io.connect('http://localhost:5000');
+	    return _this;
 	  }
 
 	  _createClass(Layout, [{
