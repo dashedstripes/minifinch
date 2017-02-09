@@ -15,6 +15,13 @@ class Modal extends React.Component {
       this.props.dispatch(updateAccount(this.props.account))
     }else {
       this.props.dispatch(newAccount(this.props.account))
+      fetch('http://localhost:5000/api/accounts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.props.account)
+      })
     }
     this.props.dispatch(setModalVisible(false))
   }

@@ -31151,6 +31151,13 @@
 	        this.props.dispatch((0, _accounts.updateAccount)(this.props.account));
 	      } else {
 	        this.props.dispatch((0, _accounts.newAccount)(this.props.account));
+	        fetch('http://localhost:5000/api/accounts', {
+	          method: 'POST',
+	          headers: {
+	            'Content-Type': 'application/json'
+	          },
+	          body: JSON.stringify(this.props.account)
+	        });
 	      }
 	      this.props.dispatch((0, _modal.setModalVisible)(false));
 	    }
