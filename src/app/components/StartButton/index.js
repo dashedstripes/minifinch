@@ -4,7 +4,19 @@ import './style.scss'
 
 class StartButton extends React.Component {
   handleClick(e) {
-    console.log(this.props)
+    fetch('http://localhost:5000/api/minifinch', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        accounts: {
+          a: this.props.process.source,
+          b: this.props.process.destination
+        },
+        filters: this.props.filters
+      })
+    })
   }
 
   render() {

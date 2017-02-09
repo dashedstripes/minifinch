@@ -28693,24 +28693,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _redux.createStore)(_reducers2.default, {
-	  accounts: [{
-	    id: Date.now(),
-	    name: 'Skycab',
-	    subdomain: 'skycab',
-	    email: 'admin@skycab.me',
-	    token: '8f02kg74ysg97g'
-	  }, {
-	    id: Date.now() + 1,
-	    name: 'Minifinch Demo',
-	    subdomain: 'minifinchdemo',
-	    email: 'admin@minifinchdemo.me',
-	    token: '9gj2rgh08hgr08ing'
-	  }]
-	}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+	var store = (0, _redux.createStore)(_reducers2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 	store.subscribe(function () {
-	  console.log(store.getState());
+	  // console.log(store.getState())
 	});
 
 	module.exports = store;
@@ -31600,11 +31586,11 @@
 
 	var _ProcessArea2 = _interopRequireDefault(_ProcessArea);
 
-	var _StartButton = __webpack_require__(319);
+	var _StartButton = __webpack_require__(317);
 
 	var _StartButton2 = _interopRequireDefault(_StartButton);
 
-	__webpack_require__(317);
+	__webpack_require__(320);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31715,8 +31701,14 @@
 	  function AccountsContainer(props) {
 	    _classCallCheck(this, AccountsContainer);
 
-	    return _possibleConstructorReturn(this, (AccountsContainer.__proto__ || Object.getPrototypeOf(AccountsContainer)).call(this, props));
-	    // this.props.dispatch(setAccounts())
+	    var _this = _possibleConstructorReturn(this, (AccountsContainer.__proto__ || Object.getPrototypeOf(AccountsContainer)).call(this, props));
+
+	    fetch('http://localhost:5000/api/accounts').then(function (res) {
+	      return res.json();
+	    }).then(function (accounts) {
+	      _this.props.dispatch((0, _accounts.setAccounts)(accounts));
+	    });
+	    return _this;
 	  }
 
 	  _createClass(AccountsContainer, [{
@@ -32200,7 +32192,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.state.account);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'jumbotron text-center dropzone', onDrop: this.handleDrop.bind(this), onDragOver: this.handleDragOver.bind(this) },
@@ -32526,46 +32517,6 @@
 /* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(318);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(280)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(279)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".mainapp {\n  margin-top: 10px; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -32576,7 +32527,7 @@
 
 	var _reactRedux = __webpack_require__(233);
 
-	__webpack_require__(320);
+	__webpack_require__(318);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32598,7 +32549,19 @@
 	  _createClass(StartButton, [{
 	    key: 'handleClick',
 	    value: function handleClick(e) {
-	      console.log(this.props);
+	      fetch('http://localhost:5000/api/minifinch', {
+	        method: 'POST',
+	        headers: {
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          accounts: {
+	            a: this.props.process.source,
+	            b: this.props.process.destination
+	          },
+	          filters: this.props.filters
+	        })
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -32619,6 +32582,46 @@
 	}
 
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(StartButton);
+
+/***/ },
+/* 318 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(319);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(280)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/sass-loader/index.js!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 319 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(279)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".start-button {\n  padding: 10px 40px; }\n", ""]);
+
+	// exports
+
 
 /***/ },
 /* 320 */
@@ -32655,7 +32658,7 @@
 
 
 	// module
-	exports.push([module.id, ".start-button {\n  padding: 10px 40px; }\n", ""]);
+	exports.push([module.id, ".mainapp {\n  margin-top: 10px; }\n", ""]);
 
 	// exports
 

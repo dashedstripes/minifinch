@@ -30,7 +30,6 @@ class Dropzone extends React.Component {
   }
   
   render() {
-    console.log(this.state.account)
     return (
        <div className="jumbotron text-center dropzone" onDrop={this.handleDrop.bind(this)} onDragOver={this.handleDragOver.bind(this)}>
          <p>{this.props.title}: {this.state.account.name}</p>

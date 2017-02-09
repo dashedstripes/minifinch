@@ -1,27 +1,10 @@
 import { createStore } from 'redux'
 import rootReducer from './reducers'
 
-let store = createStore(rootReducer, {
-  accounts: [
-    {
-      id: Date.now(),
-      name: 'Skycab',
-      subdomain: 'skycab',
-      email: 'admin@skycab.me',
-      token: '8f02kg74ysg97g'
-    },
-    {
-      id: Date.now() + 1,
-      name: 'Minifinch Demo',
-      subdomain: 'minifinchdemo',
-      email: 'admin@minifinchdemo.me',
-      token: '9gj2rgh08hgr08ing'
-    }
-  ]
-}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+let store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 store.subscribe(() => {
-  console.log(store.getState())
+  // console.log(store.getState())
 })
 
 module.exports = store
