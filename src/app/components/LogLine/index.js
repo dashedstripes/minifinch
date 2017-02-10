@@ -1,9 +1,10 @@
 import React from 'react'
+import './style.scss'
 
 class LogLine extends React.Component {
   render() {
     return (
-       <li>{this.props.text}</li>
+       <li className="log-line">$ {this.props.text}</li>
     )
   }
 }

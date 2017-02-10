@@ -1,6 +1,7 @@
 import React from 'react'
 import LogLine from '../LogLine'
 import socket from '../../services/socket'
+import './style.scss'
 
 class LogContainer extends React.Component {
   constructor(props) {
@@ -21,13 +22,13 @@ class LogContainer extends React.Component {
 
   render() {
     return (
-       <div>
+       <ul className="log-container">
          {this.state.lines.map(function(line, index) {
            return (
              <LogLine key={index} text={line.text}/>
            )
          })}
-       </div>
+       </ul>
     )
   }
 }
