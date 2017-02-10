@@ -1,6 +1,7 @@
 import React from 'react'
 import DropzoneContainer from '../DropzoneContainer'
 import FilterContainer from '../FilterContainer'
+import LogContainer from '../LogContainer'
 
 class ProcessArea extends React.Component {
   render() {
@@ -13,8 +14,7 @@ class ProcessArea extends React.Component {
              <FilterContainer/>
            </div>
            <div className="col-md-6">
-             <h5>Log</h5>
-             <br/>
+             <LogContainer/>
            </div>
          </div>
        </div>
