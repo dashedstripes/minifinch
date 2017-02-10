@@ -22,8 +22,6 @@ class LogContainer extends React.Component {
   render() {
     return (
        <div>
-         <h5>Log</h5>
-         <br/>
          {this.state.lines.map(function(line, index) {
            return (
              <LogLine key={index} text={line.text}/>
