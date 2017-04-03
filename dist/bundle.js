@@ -31162,7 +31162,7 @@
 	        this.props.dispatch((0, _accounts.updateAccount)(this.props.account));
 	      } else {
 	        this.props.dispatch((0, _accounts.newAccount)(this.props.account));
-	        fetch('http://localhost:5000/api/accounts', {
+	        fetch('http://localhost:3030/api/accounts', {
 	          method: 'POST',
 	          headers: {
 	            'Content-Type': 'application/json'
@@ -31721,7 +31721,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (AccountsContainer.__proto__ || Object.getPrototypeOf(AccountsContainer)).call(this, props));
 
-	    fetch('http://localhost:5000/api/accounts').then(function (res) {
+	    fetch('http://localhost:3030/api/accounts').then(function (res) {
 	      return res.json();
 	    }).then(function (accounts) {
 	      _this.props.dispatch((0, _accounts.setAccounts)(accounts));
@@ -32695,7 +32695,7 @@
 
 	'use strict';
 
-	var socket = io.connect('http://localhost:5000');
+	var socket = io.connect('http://localhost:3030');
 	module.exports = socket;
 
 /***/ },
@@ -32774,7 +32774,7 @@
 	  _createClass(StartButton, [{
 	    key: 'handleClick',
 	    value: function handleClick(e) {
-	      fetch('http://localhost:5000/api/minifinch', {
+	      fetch('http://localhost:3030/api/minifinch', {
 	        method: 'POST',
 	        headers: {
 	          'Content-Type': 'application/json'

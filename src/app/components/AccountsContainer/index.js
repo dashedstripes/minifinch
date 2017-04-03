@@ -8,7 +8,7 @@ import './style.scss'
 class AccountsContainer extends React.Component {
   constructor(props) {
     super(props)
-    fetch('http://localhost:5000/api/accounts').then((res) => {
+    fetch('http://localhost:3030/api/accounts').then((res) => {
       return res.json()
     }).then((accounts) => {
       this.props.dispatch(setAccounts(accounts))
